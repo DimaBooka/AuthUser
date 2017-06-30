@@ -1,0 +1,24 @@
+@import "../common-usage/common-interface";
+
+
+input, button, textarea, select, option {
+  font-family: inherit;
+}
+
+header, a {
+  list-style: none;
+}
+
+header {
+  padding: 3px 20px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+  border-bottom: 2px $grey-color solid;
+}
+
+@media screen and (max-width: 480px) {
+  header {
+    justify-content: center;
+  }
+}

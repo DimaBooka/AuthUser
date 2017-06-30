@@ -1,0 +1,22 @@
+
+.form-validator {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-validator .help-block {
+  padding-top: 15px;
+  color: rgba(230, 24, 24, 0.84);
+}
+
+@media screen and (max-width: 372px)  {
+  .help-block {
+    width: 230px;
+    text-align: center;
+  }
+}

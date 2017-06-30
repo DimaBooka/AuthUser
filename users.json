@@ -1,0 +1,28 @@
+[
+  {
+    "name": "awdawd",
+    "surName": "AW234324AW",
+    "dob": {
+      "date": {
+        "year": 1994,
+        "month": 6,
+        "day": 16
+      },
+      "jsdate": "1994-06-15T21:00:00.000Z",
+      "formatted": "06/16/1994",
+      "epoc": 771714000
+    },
+    "phone": "+38(023) 523 5235",
+    "adress": "AW234324AW",
+    "city": "AW234324AW",
+    "country": "AW234324AW",
+    "username": "booka",
+    "password": "tunnel777",
+    "employmentStatus": "unemployed",
+    "employmentPlace": "default",
+    "annualIncome": "1500-2000",
+    "favouriteSport": "AW234324AW",
+    "id": 1,
+    "token": "d41d8cd98f00b204e9800998ecf8427e"
+  }
+]

@@ -1,0 +1,11 @@
+@import "../common-usage/common-interface";
+
+.tab {
+  color: $grey-color;
+  padding: 10px;
+  font-size: 18px;
+}
+
+.active-tab {
+  color: rgb(71, 71, 71);
+}

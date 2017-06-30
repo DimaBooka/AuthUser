@@ -1,0 +1,57 @@
+<form class="form-holder" (ngSubmit)="submitFirstStep(); firstForm.reset();" [formGroup]="firstForm">
+
+  <field-validator [inputField]="firstForm.get('name')" [labelText]="'Name'"
+                   [inputErrors]="firstForm.get('name').errors" [errorDefs]="validationMessages">
+    <div class="form-group">
+      <input class="form-input" type="text" placeholder="Name" formControlName="name">
+    </div>
+  </field-validator>
+
+  <field-validator [inputField]="firstForm.get('surName')" [labelText]="'Surname'"
+                   [inputErrors]="firstForm.get('surName').errors" [errorDefs]="validationMessages">
+    <div class="form-group">
+      <input class="form-input" type="text" placeholder="surName" formControlName="surName">
+    </div>
+  </field-validator>
+
+  <field-validator [inputField]="firstForm.get('dob')" [labelText]="'Date of Birthday'"
+                   [inputErrors]="firstForm.get('dob').errors" [errorDefs]="validationMessages">
+    <div class="form-group">
+      <!--<input class="form-input" type="date" placeholder="mm/dd/yy" formControlName="dob">-->
+
+      <my-date-picker name="dob" [options]="myDatePickerOptions" placeholder="mm/dd/yy" [selDate]="01/01/1990"
+                      formControlName="dob"></my-date-picker>
+    </div>
+  </field-validator>
+
+  <field-validator [inputField]="firstForm.get('phone')" [labelText]="'Phone'"
+                   [inputErrors]="firstForm.get('phone').errors" [errorDefs]="validationMessages">
+    <div class="form-group">
+      <input class="form-input" [textMask]="{mask: mask}" type="text" placeholder="+381 1234 9874" formControlName="phone">
+    </div>
+  </field-validator>
+
+  <field-validator [inputField]="firstForm.get('adress')" [labelText]="'Address'"
+                   [inputErrors]="firstForm.get('adress').errors" [errorDefs]="validationMessages">
+    <div class="form-group">
+      <input class="form-input" type="text" placeholder="Address" formControlName="adress">
+    </div>
+  </field-validator>
+
+  <field-validator [inputField]="firstForm.get('city')" [labelText]="'City'"
+                   [inputErrors]="firstForm.get('city').errors" [errorDefs]="validationMessages">
+    <div class="form-group">
+      <input class="form-input" type="text" placeholder="City" formControlName="city">
+    </div>
+  </field-validator>
+
+  <field-validator [inputField]="firstForm.get('country')" [labelText]="'Country'"
+                   [inputErrors]="firstForm.get('country').errors" [errorDefs]="validationMessages">
+    <div class="form-group">
+      <input class="form-input" type="text" placeholder="Country" formControlName="country">
+    </div>
+  </field-validator>
+
+  <input type="submit" class="input-group-submit" [disabled]="!firstForm.valid" value="Continue">
+
+</form>

@@ -1,0 +1,22 @@
+
+<form class="form-holder" (submit)="doLogin(); loginForm.reset()" [formGroup]="loginForm">
+
+  <field-validator [inputField]="loginForm.get('username')"
+                   [inputErrors]="loginForm.get('username').errors" [errorDefs]="validationMessages">
+    <div class="form-group">
+      <input class= "form-input" type="text" name="username" placeholder="Username" formControlName="username">
+    </div>
+  </field-validator>
+
+  <field-validator [inputField]="loginForm.get('password')"
+                   [inputErrors]="loginForm.get('password').errors" [errorDefs]="validationMessages">
+    <div class="form-group">
+      <input class="form-input" type="password" name="password" placeholder="Password" formControlName="password">
+    </div>
+  </field-validator>
+
+  <div class="form-group">
+    <input class="btn btn-flat" type="submit" value="Login">
+  </div>
+
+</form>

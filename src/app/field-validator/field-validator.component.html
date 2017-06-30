@@ -1,0 +1,9 @@
+<div class="form-validator" [ngClass]="{'has-error': errorMessage && (inputField.touched ||
+                                        inputField.dirty) && inputField.errors}">
+  <label class="control-label">{{labelText}}</label>
+  <ng-content></ng-content>
+  <span class="help-block" *ngIf="errorMessage && (inputField.touched ||
+                                  inputField.dirty) && inputField.errors">
+    {{errorMessage}}
+  </span>
+</div>
