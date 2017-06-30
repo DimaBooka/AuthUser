@@ -13,16 +13,25 @@ app.use(express.static(__dirname + '/dist'));
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET,PUT,PATCH,POST,DELETE');
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
 
   next();
 });
 
 
-app.get('/api/users/:id', (req, res) => {
+app.get('/api/users/me', (req, res) => {
 
   const items = jsonfile.readFileSync(file);
-  res.send(items);
+  let token = req.headers['authorization'];
+  if (!token) {
+    res.status(400).send({'error': 'Token was not providen'});
+  }
+
+  let currentUser = items.findIndex((obj => obj.token == token));
+  if (currentUser) {
+    return res.send(currentUser);
+  }
+  res.status(400).send({'error': 'User, not found'});
 
 });
 
@@ -48,7 +57,7 @@ app.post('/api/sign-up', (req, res) => {
 app.post('/api/login/', (req, res) => {
   let users = jsonfile.readFileSync(file);
   const request = req.body;
-
+  console.log(request);
   let user = users.filter((item, index) => {
     return request.password === item.password && request.username === item.username
   });

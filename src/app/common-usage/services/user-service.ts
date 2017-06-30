@@ -5,26 +5,30 @@ import { User } from '../models/user.model';
 export class UserService {
 
   currentUser: User;
-
+  token: string;
   constructor() {}
 
-  setToken(token) {
-    // return this.http.patch(`${API_PATH}/${item.id}`, JSON.stringify(item), this.options)
-    //   .map((resp) => resp.json())
-    //   .catch(HandleError)
+  setToken(token: string) {
+    this.token = token;
   }
 
-  clearToken() {
-    // return this.http.patch(`${API_PATH}/${item.id}`, JSON.stringify(item), this.options)
-    //   .map((resp) => resp.json())
-    //   .catch(HandleError)
+  clearTokent() {
+    this.token = '';
+  }
+
+  getToken() {
+    return this.token;
+  }
+
+  setCurrentUser(user: User): void {
+    this.currentUser = user;
   }
 
   getCurrentUser (): User {
     // return this.http.patch(`${API_PATH}/${item.id}`, JSON.stringify(item), this.options)
     //   .map((resp) => resp.json())
     //   .catch(HandleError)
-    return new User({token:''});
+    return this.currentUser;
   }
 
   clearCurrentUer () {

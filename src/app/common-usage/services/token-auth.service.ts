@@ -12,12 +12,12 @@ export class TokenHttp extends Http {
   }
 
   public request(url: string|Request, options?: RequestOptionsArgs): Observable<Response> {
-    let user = this.userService.getCurrentUser();
-    if(user.token){
+    let token = this.userService.getToken();
+    if(token){
       if (options) {
-        options.headers.set('Authorization', 'Token ' + user.token);
+        options.headers.set('Authorization', 'Token ' + token);
       } else {
-        (<Request> url).headers.set('Authorization', 'Token ' + user.token);
+        (<Request> url).headers.set('Authorization', 'Token ' + token);
       }
     }
     return super.request(url, options);
