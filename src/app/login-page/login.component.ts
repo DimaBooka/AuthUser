@@ -37,13 +37,27 @@ export class LoginComponent implements OnInit{
     );
     this.authService.login(this.logInUser).subscribe(
       resp => {
-        console.log(resp);
         this.userService.setToken(resp['token']);
-        this.authService.getUser().subscribe(user => {
-          this.userService.setCurrentUser(new User(user));
-          return this.router.navigate(['/login']);
-        })
+        this.authService.getUser().subscribe(
+          user => {
+            user = user['user'];
+            let currentUser = new User(
+              user['token'], user['name'],
+              user['surName'], user['dob'],
+              user['phone'], user['adress'],
+              user['city'], user['country'],
+              user['username'], user['password'],
+              user['employmentStatus'],
+              user['employmentPlace'],
+              user['annualIncome'],
+              user['favouriteSport']
+            );
+            this.userService.setCurrentUser(currentUser);
+            this.userService.authorized();
+            return this.router.navigate(['profile']);
+          },
+          error => this.serverError = error);
       },
-      error => console.log(error));
+      error => this.serverError = error);
   }
 }

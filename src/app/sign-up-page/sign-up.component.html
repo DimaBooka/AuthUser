@@ -1,7 +1,7 @@
 <span class="tab" [ngClass]="{'active-tab': firstStep}">Step 1</span>
 <span class="tab" [ngClass]="{'active-tab': !firstStep}">Step 2</span>
 
-<first-step (nextStep)="goTo2Step($event)" *ngIf="firstStep; else secodeStep"></first-step>
+<first-step (nextStep)="goTo2Step($event)" (formChanged)="firstStepChanged()" *ngIf="firstStep; else secodeStep"></first-step>
 <ng-template #secodeStep>
   <second-step (finishSignUP)="finishRegister($event)" #secodeStep></second-step>
 </ng-template>

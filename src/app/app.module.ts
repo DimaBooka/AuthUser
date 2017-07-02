@@ -18,14 +18,15 @@ import { CommonUsageModule } from './common-usage/common-usage.module';
 import { HeaderComponent } from './header-page/header-page.component';
 import { FirstStepComponent } from './sign-up-page/first-step/first-step.component';
 import { SecondStepComponent } from './sign-up-page/second-step/second-step.component';
-import { FieldValidatorComponent } from './field-validator/field-validator.component';
+import { AuthGuard } from './guards/onlyAuth';
+import { NoAuthGuard } from './guards/onlyNotAuth';
+import { DeactivateSignUpGuard } from './guards/deactivateSignUp';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    FieldValidatorComponent,
     EditProfileComponent,
     LoginComponent,
     SignUpComponent,
@@ -42,7 +43,7 @@ import { FieldValidatorComponent } from './field-validator/field-validator.compo
     CommonUsageModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [AuthGuard, NoAuthGuard, DeactivateSignUpGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

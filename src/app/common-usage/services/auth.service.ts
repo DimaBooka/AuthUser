@@ -48,9 +48,9 @@ export class AuthService {
   }
 
   logout() {
-    // return this.http.patch(`${API_PATH}/logout`, JSON.stringify(item), this.options)
-    //   .map((resp) => resp.json())
-    //   .catch(HandleError)
+    this.userService.clearCurrentUer();
+    this.userService.clearToken();
+    this.userService.authorized();
   }
 
   updateUserInfo(userDate: User) {

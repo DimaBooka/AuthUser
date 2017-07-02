@@ -21,15 +21,15 @@ app.use(function(req, res, next) {
 
 app.get('/api/users/me', (req, res) => {
 
-  const items = jsonfile.readFileSync(file);
+  const users = jsonfile.readFileSync(file);
   let token = req.headers['authorization'];
   if (!token) {
-    res.status(400).send({'error': 'Token was not providen'});
+    return res.status(400).send({'error': 'Token was not providen'});
   }
 
-  let currentUser = items.findIndex((obj => obj.token == token));
-  if (currentUser) {
-    return res.send(currentUser);
+  let currentUserIndex = users.findIndex((obj => obj['token'] === token.replace('Token ', '')));
+  if (currentUserIndex > -1) {
+    return res.send({user: users[currentUserIndex]});
   }
   res.status(400).send({'error': 'User, not found'});
 
@@ -38,7 +38,6 @@ app.get('/api/users/me', (req, res) => {
 app.post('/api/sign-up', (req, res) => {
 
   const request = req.body;
-  console.log(request);
   if (request.password !== request.passwordConfirm) {
     return res.status(400).send({'error': 'Dude, fill the input'});
   }
@@ -57,7 +56,6 @@ app.post('/api/sign-up', (req, res) => {
 app.post('/api/login/', (req, res) => {
   let users = jsonfile.readFileSync(file);
   const request = req.body;
-  console.log(request);
   let user = users.filter((item, index) => {
     return request.password === item.password && request.username === item.username
   });
@@ -65,7 +63,6 @@ app.post('/api/login/', (req, res) => {
   if (!request.username || !request.password || user.length < 1) {
     return res.status(400).send({'error': 'Unable to login with provided credentials'});
   }
-  console.log(user[0]['token']);
   res.send({'token': user[0]['token']});
 });
 

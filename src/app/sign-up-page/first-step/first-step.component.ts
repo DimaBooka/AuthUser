@@ -15,6 +15,7 @@ import {
 })
 export class FirstStepComponent implements OnInit {
   @Output() nextStep = new EventEmitter<FirstStepData>();
+  @Output() formChanged = new EventEmitter<boolean>();
 
   myDatePickerOptions: IMyDpOptions = {
     dateFormat: 'mm/dd/yyyy',
@@ -41,6 +42,10 @@ export class FirstStepComponent implements OnInit {
       city: ['', [Validators.required]],
       country: ['', [Validators.required]]
     });
+
+    this.firstForm.valueChanges.subscribe(data => {
+      this.formChanged.emit();
+    })
   }
 
   submitFirstStep() {

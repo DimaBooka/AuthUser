@@ -1,7 +1,15 @@
 <header>
-  <a class="btn" routerLink="login" routerLinkActive="active"
-     [routerLinkActiveOptions]="{exact:true}">Login</a>
 
-  <a class="btn btn-flat" routerLink="sign-up" *ngIf="!detectRegister()"
-     routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Sign up</a>
+  <span *ngIf="showAuthButtons; else hideAuthButtons">
+    <a class="btn" routerLink="login" routerLinkActive="active"
+       [routerLinkActiveOptions]="{exact:true}">Login</a>
+
+    <a class="btn btn-flat" routerLink="sign-up" *ngIf="!detectRegister()"
+       routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Sign up</a>
+  </span>
+
+  <ng-template #hideAuthButtons>
+    <a class="btn btn-flat" (click)="doLogout()">Logout</a>
+  </ng-template>
+
 </header>

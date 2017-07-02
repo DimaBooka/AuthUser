@@ -14,7 +14,8 @@ export class SignUpComponent {
   firstStep: boolean = true;
   firstStepData: FirstStepData;
   secondStepData: SecondStepData;
-  signUpData: SignUpData;
+  signUpData: SignUpData = new SignUpData({});
+  formsChanged: boolean = false;
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -35,5 +36,13 @@ export class SignUpComponent {
       error => {
         console.log(error);
       });
+  }
+
+  firstStepChanged() {
+    this.formsChanged = true;
+  }
+
+  public hasChanges() {
+    return this.formsChanged;
   }
 }
