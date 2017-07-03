@@ -1,8 +1,12 @@
-<span class="tab" [ngClass]="{'active-tab': firstStep}">Step 1</span>
-<span class="tab" [ngClass]="{'active-tab': !firstStep}">Step 2</span>
-
-<first-step (nextStep)="goTo2Step($event)" (formChanged)="firstStepChanged()" *ngIf="firstStep; else secodeStep"></first-step>
-<ng-template #secodeStep>
-  <second-step (finishSignUP)="finishRegister($event)" (formSubmitted)="secondStepSubmit()" #secodeStep></second-step>
-</ng-template>
-
+<div class="sign-up-wrapper">
+  <span>
+    <span class="tab" [ngClass]="{'active-tab': firstStep}">Step 1</span>
+    <span class="tab" [ngClass]="{'active-tab': !firstStep}">Step 2</span>
+  </span>
+  <div class="steps-holder">
+    <first-step (nextStep)="goTo2Step($event)" (formChanged)="firstStepChanged()" *ngIf="firstStep; else secodeStep"></first-step>
+    <ng-template #secodeStep>
+      <second-step (finishSignUP)="finishRegister($event)" (formSubmitted)="secondStepSubmit()" #secodeStep></second-step>
+    </ng-template>
+  </div>
+</div>

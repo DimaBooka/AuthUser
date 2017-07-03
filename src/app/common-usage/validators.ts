@@ -60,18 +60,7 @@ export function employedRequiredValidator(param: any): ValidatorFn {
   };
 }
 
-export function placeRequiredValidator(param: any): ValidatorFn {
-  return (c: AbstractControl) : {[key: string]: boolean} | null => {
-    if (c.parent && !c.parent.get(param).value && c.value != 'employed') {
-      c.parent.get(param).setValue('default');
-    } else if (c.parent && c.parent.get(param).value && c.value == 'employed') {
-      c.parent.get(param).setValue(undefined);
-    }
-    return null;
-  };
-}
-
-export function placeRequiredProfileValidator(param: any, place: string): ValidatorFn {
+export function placeRequiredValidator(param: any, place: string = ''): ValidatorFn {
   return (c: AbstractControl) : {[key: string]: boolean} | null => {
     if (c.parent && !c.parent.get(param).value && c.value != 'employed') {
       c.parent.get(param).setValue('default');
@@ -81,3 +70,14 @@ export function placeRequiredProfileValidator(param: any, place: string): Valida
     return null;
   };
 }
+//
+// export function placeRequiredProfileValidator(param: any, place: string): ValidatorFn {
+//   return (c: AbstractControl) : {[key: string]: boolean} | null => {
+//     if (c.parent && !c.parent.get(param).value && c.value != 'employed') {
+//       c.parent.get(param).setValue('default');
+//     } else if (c.parent && c.parent.get(param).value && c.value == 'employed') {
+//       c.parent.get(param).setValue(place);
+//     }
+//     return null;
+//   };
+// }

@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'field-validator',
+  encapsulation: ViewEncapsulation.None,
   templateUrl: './field-validator.component.html',
   styleUrls: ['./field-validator.component.scss']
 })

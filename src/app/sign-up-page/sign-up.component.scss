@@ -9,3 +9,33 @@
 .active-tab {
   color: rgb(71, 71, 71);
 }
+
+.steps-holder {
+  width: 400px;
+  padding: 30px 0;
+}
+
+.sign-up-wrapper {
+  display: block;
+  height: 100%;
+  width: 400px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 480px) {
+  .steps-holder {
+    width: 250px;
+    margin: 30px 0;
+    padding-top: 0;
+  }
+
+  .sign-up-wrapper {
+    width: 250px;
+  }
+}
+
+.input-group-submit {
+  margin: 0;
+  float: left;
+}
+
