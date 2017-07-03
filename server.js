@@ -75,12 +75,8 @@ app.put('/api/users/me', (req, res) => {
   let users = jsonfile.readFileSync(file);
 
   let index = users.findIndex(obj => {
-    if (obj.token == req.headers['authorization'].replace('Token ', '')) {
-      console.log('found');
-    }
     return obj.token == req.headers['authorization'].replace('Token ', '');
   });
-  console.log(index)
   if (index === undefined) {
     return res.status(400).send({'error': 'User, not found'});
   }
