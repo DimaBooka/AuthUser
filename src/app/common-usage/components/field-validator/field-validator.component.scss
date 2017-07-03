@@ -13,6 +13,14 @@
 
 .with-label .form-validator {
   min-height: 87px;
+  width: 100%;
+}
+
+.checkbox-group .form-validator {
+  display: flex;
+  flex-direction: row-reverse;
+  min-height: 30px;
+  padding-bottom: 20px;
 }
 
 label {
@@ -24,6 +32,7 @@ label {
   //padding-top: 15px;
   color: rgba(230, 24, 24, 0.84);
   font-size: 13px;
+  text-align: center;
 }
 
 @media screen and (max-width: 480px)  {

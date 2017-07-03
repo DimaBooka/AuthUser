@@ -1,28 +1,28 @@
 <!--<form class="form-holder" (ngSubmit)="submitSecondStep(); secondForm.reset();" [formGroup]="secondForm">-->
 <form class="form-holder" (ngSubmit)="submitSecondStep();" [formGroup]="secondForm">
 
-  <field-validator [inputField]="secondForm.get('username')" [labelText]="'Username'"
+  <field-validator class="with-label" [inputField]="secondForm.get('username')" [labelText]="'Username'"
                    [inputErrors]="secondForm.get('username').errors" [errorDefs]="validationMessages">
     <div class="form-group">
       <input class="form-input" type="text" placeholder="Username" formControlName="username">
     </div>
   </field-validator>
 
-  <field-validator [inputField]="secondForm.get('password')" [labelText]="'Password'"
+  <field-validator class="with-label" [inputField]="secondForm.get('password')" [labelText]="'Password'"
                    [inputErrors]="secondForm.get('password').errors" [errorDefs]="validationMessages">
     <div class="form-group">
-      <input class="form-input" type="text" placeholder="Password" formControlName="password">
+      <input class="form-input" type="password" placeholder="Password" formControlName="password">
     </div>
   </field-validator>
 
-  <field-validator [inputField]="secondForm.get('passwordConfirm')" [labelText]="'Confirm password'"
+  <field-validator class="with-label" [inputField]="secondForm.get('passwordConfirm')" [labelText]="'Confirm password'"
                    [inputErrors]="secondForm.get('passwordConfirm').errors" [errorDefs]="validationMessages">
     <div class="form-group">
-      <input class="form-input" type="text" placeholder="Confirm password" formControlName="passwordConfirm">
+      <input class="form-input" type="password" placeholder="Confirm password" formControlName="passwordConfirm">
     </div>
   </field-validator>
 
-  <field-validator [inputField]="secondForm.get('employmentStatus')" [labelText]="'Employment status'"
+  <field-validator class="with-label" [inputField]="secondForm.get('employmentStatus')" [labelText]="'Employment status'"
                    [inputErrors]="secondForm.get('employmentStatus').errors" [errorDefs]="validationMessages">
     <div class="form-group">
       <!--<input class="form-input" type="text" placeholder="Employment status" formControlName="employmentStatus">-->
@@ -35,7 +35,7 @@
     </div>
   </field-validator>
 
-  <field-validator [ngStyle]="{'display': showPlaceField ? 'flex' : 'none'}"
+  <field-validator class="with-label" [ngStyle]="{'display': showPlaceField ? 'flex' : 'none'}"
                    [inputField]="secondForm.get('employmentPlace')" [labelText]="'Place of employment'"
                    [inputErrors]="secondForm.get('employmentPlace').errors" [errorDefs]="validationMessages">
     <div class="form-group">
@@ -43,7 +43,7 @@
     </div>
   </field-validator>
 
-  <field-validator [inputField]="secondForm.get('annualIncome')" [labelText]="'Annual income'"
+  <field-validator class="with-label" [inputField]="secondForm.get('annualIncome')" [labelText]="'Annual income'"
                    [inputErrors]="secondForm.get('annualIncome').errors" [errorDefs]="validationMessages">
     <div class="form-group">
       <select formControlName="annualIncome">
@@ -57,20 +57,20 @@
     </div>
   </field-validator>
 
-  <field-validator [inputField]="secondForm.get('favouriteSport')" [labelText]="'Favourite sport'"
+  <field-validator class="with-label" [inputField]="secondForm.get('favouriteSport')" [labelText]="'Favourite sport'"
                    [inputErrors]="secondForm.get('favouriteSport').errors" [errorDefs]="validationMessages">
     <div class="form-group">
       <input class="form-input" type="text" placeholder="Favourite sport" formControlName="favouriteSport">
     </div>
   </field-validator>
 
-  <field-validator [inputField]="secondForm.get('acceptTerms')" [labelText]="'Accept terms'"
+  <field-validator class="with-label checkbox-group" [inputField]="secondForm.get('acceptTerms')" [labelText]="'Accept terms'"
                    [inputErrors]="secondForm.get('acceptTerms').errors" [errorDefs]="validationMessages">
     <div class="form-group">
-      <input class="form-input" type="text" placeholder="Accept terms" formControlName="acceptTerms">
+      <input class="form-input" type="checkbox" placeholder="Accept terms" formControlName="acceptTerms">
     </div>
   </field-validator>
 
-  <input type="submit" class="input-group-submit" [disabled]="!secondForm.valid" value="Finish">
+  <input type="submit" class="input-group-submit btn btn-flat" [disabled]="!secondForm.valid || !secondForm.get('acceptTerms').value" value="Finish">
 
 </form>
