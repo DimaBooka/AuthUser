@@ -42,7 +42,11 @@ export class EditProfileComponent implements OnInit{
   }
 
   ngOnInit() {
-    this.profileForm = this.fb.group({
+    this.profileForm = this.fb.group(this.initForm());
+  }
+
+  initForm() {
+    return {
       name: [this.profile['name'], [Validators.required, MinLengthValidator(2), MaxLengthValidator(15)]],
       surName: [this.profile['surName'], [Validators.required, MinLengthValidator(2), MaxLengthValidator(20)]],
       dob: [this.profile['dob'], [Validators.required, ageValidator]],
@@ -52,11 +56,18 @@ export class EditProfileComponent implements OnInit{
       country: [this.profile['country'], [Validators.required]],
       username: [this.profile['username'], [Validators.required, MinLengthValidator(2), MaxLengthValidator(15)]],
       password: [this.profile['password'], [Validators.required, symbolsValidator, MinLengthValidator(6)]],
-      employmentStatus: [this.profile['employmentStatus'], [Validators.required, placeRequiredProfileValidator('employmentPlace')]],
+      employmentStatus: [this.profile['employmentStatus'], [Validators.required, placeRequiredProfileValidator('employmentPlace', this.profile.employmentPlace)]],
       employmentPlace: [this.profile['employmentPlace'], [employedRequiredValidator('employmentStatus')]],
       annualIncome: [this.profile['annualIncome'], [Validators.required]],
       favouriteSport: [this.profile['favouriteSport'], []],
-    });
+    }
+  }
+
+  toggleForm() {
+    if (!this.editProfile) {
+      this.profileForm = this.fb.group(this.initForm());
+    }
+    this.editProfile = !this.editProfile;
   }
 
   checkStatusValue(e) {
