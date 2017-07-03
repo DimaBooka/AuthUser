@@ -6,6 +6,7 @@ import { NoContentComponent } from './no-content/no-content.component';
 import { AuthGuard } from './guards/onlyAuth';
 import { NoAuthGuard } from './guards/onlyNotAuth';
 import { DeactivateSignUpGuard } from './guards/deactivateSignUp';
+import { ProfileResolve } from './common-usage/resolvers/profile.resolver';
 
 export const appRoutes: Routes = [
   { path: '', component: LoginComponent, canActivate: [NoAuthGuard] },
@@ -15,6 +16,12 @@ export const appRoutes: Routes = [
     canActivate: [NoAuthGuard],
     canDeactivate: [DeactivateSignUpGuard]
   },
-  { path: 'profile', component: EditProfileComponent, canActivate: [AuthGuard] },
+  { path: 'profile',
+    component: EditProfileComponent,
+    canActivate: [AuthGuard],
+    resolve: {
+      profile: ProfileResolve
+    }
+  },
   { path: '**', component: NoContentComponent },
 ];

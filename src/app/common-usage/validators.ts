@@ -70,3 +70,12 @@ export function placeRequiredValidator(param: any): ValidatorFn {
     return null;
   };
 }
+
+export function placeRequiredProfileValidator(param: any): ValidatorFn {
+  return (c: AbstractControl) : {[key: string]: boolean} | null => {
+    if (c.parent && c.parent.get(param).value && c.value == 'employed') {
+      c.parent.get(param).setValue(undefined);
+    }
+    return null;
+  };
+}

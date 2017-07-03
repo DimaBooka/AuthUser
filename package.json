@@ -27,6 +27,7 @@
     "angular2-text-mask": "^8.0.2",
     "body-parser": "^1.17.2",
     "core-js": "^2.4.1",
+    "crypto": "0.0.3",
     "express": "^4.15.3",
     "js-md5": "^0.4.2",
     "jsonfile": "^3.0.0",

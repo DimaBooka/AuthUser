@@ -16,6 +16,7 @@ import {
 })
 export class SecondStepComponent implements OnInit {
   @Output() finishSignUP = new EventEmitter<SecondStepData>();
+  @Output() formSubmitted = new EventEmitter<boolean>();
 
   validationMessages = validationMessages;
   secondForm: FormGroup;
@@ -42,6 +43,7 @@ export class SecondStepComponent implements OnInit {
   }
 
   submitSecondStep() {
+    this.formSubmitted.emit();
     this.secondData = new SecondStepData(
       this.secondForm.get('username').value,
       this.secondForm.get('password').value,

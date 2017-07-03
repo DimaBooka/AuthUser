@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { logInUser, User } from '../models/user.model';
+import { logInUser, User, UserUpdate } from '../models/user.model';
 import { SignUpData } from '../../sign-up-page/sign-up.model';
 import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
@@ -11,11 +11,8 @@ import { UserService } from './user-service';
 
 @Injectable()
 export class AuthService {
-
   headers: Headers = new Headers();
   options: any;
-
-  currentUser: User[];
 
   constructor(private http: Http, private userService: UserService) {
     this.headers.append('Content-Type', 'application/json');
@@ -41,7 +38,6 @@ export class AuthService {
     return this.http.post(`${API_PATH}/login`, JSON.stringify(logInData), this.options)
       .map((resp) => {
       resp = resp.json();
-      // this.userService.setCurrentUser();
       return resp
     })
       .catch(HandleError)
@@ -53,11 +49,10 @@ export class AuthService {
     this.userService.authorized();
   }
 
-  updateUserInfo(userDate: User) {
-    // return this.http.patch(`${API_PATH}/users/${id}`, JSON.stringify(item), this.options)
-    //   .map((resp) => resp.json())
-    //   .catch(HandleError)
+  updateUserInfo(userDate: UserUpdate) {
+    console.log(userDate);
+    return this.http.put(`${API_PATH}/users/me`, JSON.stringify(userDate), this.options)
+      .map((resp) => resp.json())
+      .catch(HandleError)
   }
-
-
 }

@@ -5,6 +5,7 @@ import { UserService } from './services/user-service';
 import { TokenHttp } from './services/token-auth.service';
 import { AuthService } from './services/auth.service';
 import { FieldValidatorComponent } from './components/field-validator/field-validator.component';
+import { ProfileResolve } from './resolvers/profile.resolver';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { FieldValidatorComponent } from './components/field-validator/field-vali
       useClass: TokenHttp,
       deps: [XHRBackend, RequestOptions, UserService]
     },
+    ProfileResolve,
     UserService,
     AuthService
   ],

@@ -43,7 +43,11 @@ import { DeactivateSignUpGuard } from './guards/deactivateSignUp';
     CommonUsageModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [AuthGuard, NoAuthGuard, DeactivateSignUpGuard],
+  providers: [
+    AuthGuard,
+    NoAuthGuard,
+    DeactivateSignUpGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

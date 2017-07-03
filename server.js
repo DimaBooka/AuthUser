@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const jsonfile = require('jsonfile');
 const md5 = require('js-md5');
+const crypto = require('crypto');
 const file = 'users.json';
 const app = express();
 
@@ -46,7 +47,7 @@ app.post('/api/sign-up', (req, res) => {
   request['id'] = items.length > 0 ? items[items.length - 1].id + 1 : 1;
   delete request['passwordConfirm'];
   delete request['acceptTerms'];
-  request['token'] = md5(request['id']);
+  request['token'] = crypto.createHash('md5').update(request['id'] + new Date().toDateString()).digest("hex");
   items.push(request);
   jsonfile.writeFileSync(file, items, {spaces: 2});
 
@@ -66,21 +67,32 @@ app.post('/api/login/', (req, res) => {
   res.send({'token': user[0]['token']});
 });
 
-app.patch('/api/users/:id', (req, res) => {
+app.put('/api/users/me', (req, res) => {
 
   const request = req.body;
   console.log(request);
-  if (!request.content || typeof request.status !== 'boolean') {
-    return res.status(400).send({'error': 'Dude, not all data was provided'});
+
+  let users = jsonfile.readFileSync(file);
+
+  let index = users.findIndex(obj => {
+    if (obj.token == req.headers['authorization'].replace('Token ', '')) {
+      console.log('found');
+    }
+    return obj.token == req.headers['authorization'].replace('Token ', '');
+  });
+  console.log(index)
+  if (index === undefined) {
+    return res.status(400).send({'error': 'User, not found'});
   }
 
-  let items = jsonfile.readFileSync(file);
+  Object.keys(users[index]).map(key => {
+    if (request[key]) {
+      users[index][key] = request[key];
+    }
+  });
 
-  let index = items.findIndex((obj => obj.id == req.params.id));
-  items[index].content = request.content;
-  items[index].status = request.status;
-  jsonfile.writeFileSync(file, items, {spaces: 2});
-  res.send({'success': 'Dude, item was successfully updated'})
+  jsonfile.writeFileSync(file, users, {spaces: 2});
+  res.send({'success': 'User info was successfully updated'})
 });
 
 app.listen(process.env.PORT || 8080);

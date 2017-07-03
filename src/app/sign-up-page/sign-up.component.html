@@ -3,6 +3,6 @@
 
 <first-step (nextStep)="goTo2Step($event)" (formChanged)="firstStepChanged()" *ngIf="firstStep; else secodeStep"></first-step>
 <ng-template #secodeStep>
-  <second-step (finishSignUP)="finishRegister($event)" #secodeStep></second-step>
+  <second-step (finishSignUP)="finishRegister($event)" (formSubmitted)="secondStepSubmit()" #secodeStep></second-step>
 </ng-template>
 

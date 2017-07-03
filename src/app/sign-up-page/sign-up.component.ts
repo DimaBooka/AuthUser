@@ -15,7 +15,8 @@ export class SignUpComponent {
   firstStepData: FirstStepData;
   secondStepData: SecondStepData;
   signUpData: SignUpData = new SignUpData({});
-  formsChanged: boolean = false;
+  formChanged: boolean = false;
+  formSubmited: boolean = false;
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -39,10 +40,14 @@ export class SignUpComponent {
   }
 
   firstStepChanged() {
-    this.formsChanged = true;
+    this.formChanged = true;
   }
 
+  secondStepSubmit () {
+    this.formSubmited = true;
+  };
+
   public hasChanges() {
-    return this.formsChanged;
+    return this.formChanged && !this.formSubmited;
   }
 }
