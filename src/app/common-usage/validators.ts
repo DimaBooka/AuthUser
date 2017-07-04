@@ -71,10 +71,10 @@ export function placeRequiredValidator(param: any, place: string = ''): Validato
   };
 }
 
-export function placeRequiredProfileValidator(param: any, place: string): ValidatorFn {
+export function placeRequiredProfileValidator(param: any, place: string = ''): ValidatorFn {
   return (c: AbstractControl) : {[key: string]: boolean} | null => {
     if (c.parent && !c.parent.get(param).value && c.value != 'Employed') {
-      c.parent.get(param).setValue(place);
+      c.parent.get(param).setValue('default');
     } else if (c.parent && c.parent.get(param).value && c.value == 'Employed') {
       c.parent.get(param).setValue(place);
     }
