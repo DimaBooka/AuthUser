@@ -78,6 +78,11 @@ export class EditProfileComponent implements OnInit{
   }
 
   updateProfile() {
+    if (this.profileForm.get('employmentPlace').value === 'default' ||
+      this.profileForm.get('employmentStatus').value !== "Employed") {
+      this.profileForm.get('employmentPlace').setValue('');
+    }
+
     this.updateData = new UserUpdate(
       this.profileForm.get('name').value,
       this.profileForm.get('surName').value,

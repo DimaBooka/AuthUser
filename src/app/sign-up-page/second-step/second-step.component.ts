@@ -44,7 +44,8 @@ export class SecondStepComponent implements OnInit {
   submitSecondStep() {
     this.formSubmitted.emit();
 
-    if (this.secondForm.get('employmentPlace').value === 'default') {
+    if (this.secondForm.get('employmentPlace').value === 'default' ||
+        this.secondForm.get('employmentStatus').value !== "Employed") {
       this.secondForm.get('employmentPlace').setValue('');
     }
 

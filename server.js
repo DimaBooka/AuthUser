@@ -82,7 +82,7 @@ app.put('/api/users/me', (req, res) => {
   }
 
   Object.keys(users[index]).map(key => {
-    if (request[key]) {
+    if (request[key] === '' || request[key]) {
       users[index][key] = request[key];
     }
   });
