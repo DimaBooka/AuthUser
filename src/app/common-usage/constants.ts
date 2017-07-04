@@ -1,1 +1,1 @@
-export const API_PATH = 'https://marvelous-lake-clark-86185.herokuapp.com/api';
+export const API_PATH = 'https://sign-up-form-test-753.herokuapp.com/api';
