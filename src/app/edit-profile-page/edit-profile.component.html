@@ -13,7 +13,7 @@
                          [inputErrors]="profileForm.get('name').errors" [errorDefs]="validationMessages">
           <div class="form-group edit-view">
             <label>Name</label>
-            <input class="form-input" type="text" placeholder="Name" formControlName="name" [readonly]="editProfile">
+            <input class="form-input" type="text" placeholder="Name" formControlName="name" readonly>
           </div>
         </field-validator>
 
@@ -21,7 +21,7 @@
                          [inputErrors]="profileForm.get('surName').errors" [errorDefs]="validationMessages">
           <div class="form-group edit-view">
             <label>Surname</label>
-            <input class="form-input" type="text" placeholder="surName" formControlName="surName" [readonly]="editProfile">
+            <input class="form-input" type="text" placeholder="surName" formControlName="surName" readonly>
           </div>
         </field-validator>
 
@@ -34,7 +34,7 @@
                    class="form-input" type="date" ngui-datetime-picker
                    min-date="1900-01-01" max-date="{{maxDate}}" close-on-select="true"
                    date-only="true" placeholder="mm/dd/yy" formControlName="dob">
-            <span *ngIf="editProfile" class="form-input mockup">{{ profileForm.get('dob').value }}</span>
+            <span *ngIf="editProfile" class="form-input mockup">{{ profileForm.get('dob').value.split('-').reverse().join('.') }}</span>
           </div>
         </field-validator>
 
@@ -140,6 +140,9 @@
       </div>
 
       <div class="btn-holder">
+        <div class="server-error-holder" *ngIf="serverError">
+          <span class="server-error">{{ serverError }}</span>
+        </div>
         <input type="submit" class="input-group-submit btn btn-flat" *ngIf="!editProfile" [disabled]="!profileForm.valid" value="Update">
 
         <input type="button" class="btn" (click)="toggleForm()" [value]="editProfile ? 'Edit' : 'Close'">

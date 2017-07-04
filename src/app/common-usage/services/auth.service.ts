@@ -50,7 +50,6 @@ export class AuthService {
   }
 
   updateUserInfo(userDate: UserUpdate) {
-    console.log(userDate);
     return this.http.put(`${API_PATH}/users/me`, JSON.stringify(userDate), this.options)
       .map((resp) => resp.json())
       .catch(HandleError)

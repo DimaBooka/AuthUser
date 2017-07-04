@@ -6,6 +6,11 @@
   <div class="steps-holder">
     <first-step (nextStep)="goTo2Step($event)" (formChanged)="firstStepChanged()" *ngIf="firstStep; else secodeStep"></first-step>
     <ng-template #secodeStep>
+
+      <div class="server-error-holder" *ngIf="serverError">
+        <span class="server-error">{{ serverError }}</span>
+      </div>
+
       <second-step (finishSignUP)="finishRegister($event)" (formSubmitted)="secondStepSubmit()" #secodeStep></second-step>
     </ng-template>
   </div>

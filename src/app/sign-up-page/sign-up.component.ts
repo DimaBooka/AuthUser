@@ -28,10 +28,8 @@ export class SignUpComponent {
   finishRegister(secondStepData: SecondStepData) {
     this.secondStepData = secondStepData;
     this.signUpData = new SignUpData(Object.assign(this.firstStepData, this.secondStepData));
-    console.log(this.signUpData);
     this.authService.signUp(this.signUpData).subscribe(
       resp => {
-        console.log(resp);
         return this.router.navigate(['/login']);
       },
       error => {

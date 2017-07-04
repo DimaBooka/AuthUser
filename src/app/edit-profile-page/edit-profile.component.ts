@@ -10,6 +10,7 @@ import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { IMyDpOptions } from 'mydatepicker';
 import { validationMessages } from '../common-usage/validation-messages';
 import { AuthService } from '../common-usage/services/auth.service';
+import { UserService } from '../common-usage/services/user-service';
 
 
 @Component({
@@ -34,11 +35,14 @@ export class EditProfileComponent implements OnInit{
   maxDate: any = new Date().toISOString().substring(0,10);
   showPlaceField: boolean = false;
   editProfile: boolean = true;
+  serverError: string = '';
 
-  constructor(private authService: AuthService, private route: ActivatedRoute, private fb: FormBuilder){
+  constructor(private authService: AuthService,
+              private userService: UserService,
+              private route: ActivatedRoute,
+              private fb: FormBuilder){
     this.route.data.subscribe((user: any)=> {
       this.profile = user['profile']['user'];
-      console.log(this.profile);
     });
   }
 
@@ -89,8 +93,30 @@ export class EditProfileComponent implements OnInit{
       this.profileForm.get('annualIncome').value,
       this.profileForm.get('favouriteSport').value
     );
-    this.authService.updateUserInfo(this.updateData).subscribe(data => console.log(data),
-                                                               error => console.log(error));
+    this.authService.updateUserInfo(this.updateData).subscribe(data => {
+      this.authService.getUser().subscribe(
+        user => {
+          user = user['user'];
+          let currentUser = new User(
+            user['token'], user['name'],
+            user['surName'], user['dob'],
+            user['phone'], user['adress'],
+            user['city'], user['country'],
+            user['username'], user['password'],
+            user['employmentStatus'],
+            user['employmentPlace'],
+            user['annualIncome'],
+            user['favouriteSport']
+          );
+          this.userService.setCurrentUser(currentUser);
+          this.profile = currentUser;
+          this.userService.authorized();
+          return this.toggleForm();
+        },
+        error => this.serverError = error);
+    },
+    error => this.serverError = error
+    );
   }
 
 }

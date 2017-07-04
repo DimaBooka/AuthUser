@@ -1,4 +1,9 @@
 <div class="login-wrapper">
+
+  <div class="server-error-holder" *ngIf="serverError">
+    <span class="server-error">{{ serverError }}</span>
+  </div>
+
   <form class="form-holder" (submit)="doLogin(); loginForm.reset()" [formGroup]="loginForm">
 
     <field-validator [inputField]="loginForm.get('username')"

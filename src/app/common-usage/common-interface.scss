@@ -46,6 +46,17 @@
   color: rgba(61, 66, 73, 0.88);
 }
 
+.server-error-holder {
+  width: 100%;
+  text-align: center;
+  padding-bottom: 14px;
+  font-size: 13px;
+
+  .server-error {
+    color: red;
+  }
+}
+
 .form-input::placeholder {
   opacity: 0.6;
 }

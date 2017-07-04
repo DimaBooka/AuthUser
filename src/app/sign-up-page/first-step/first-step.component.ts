@@ -17,13 +17,6 @@ export class FirstStepComponent implements OnInit {
   @Output() nextStep = new EventEmitter<FirstStepData>();
   @Output() formChanged = new EventEmitter<boolean>();
 
-  myDatePickerOptions: IMyDpOptions = {
-    dateFormat: 'mm/dd/yyyy',
-    showTodayBtn: false,
-    editableDateField: false,
-    openSelectorOnInputClick: true,
-    disableUntil: {year: 1900, month: 1, day: 1}
-  };
   maxDate: any = new Date().toISOString().substring(0,10);
   public mask = ['+', '3', '8', '(', '0', /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, ' ', /\d/, /\d/, /\d/, /\d/];
 

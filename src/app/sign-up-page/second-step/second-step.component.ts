@@ -20,7 +20,6 @@ export class SecondStepComponent implements OnInit {
 
   validationMessages = validationMessages;
   secondForm: FormGroup;
-  serverError: string;
   secondData: SecondStepData;
   showPlaceField: boolean = false;
   constructor(private fb: FormBuilder) { }

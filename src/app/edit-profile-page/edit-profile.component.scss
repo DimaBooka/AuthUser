@@ -15,6 +15,10 @@ h1{
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  &.form-validator {
+    min-height: 65px;
+  }
 }
 
 field-validator {
@@ -25,6 +29,7 @@ field-validator {
 .edit-wrapper .btn-holder {
   display: flex;
   justify-content: flex-end;
+  margin-bottom: 20px;
 }
 
 .edit-wrapper .data-holder {
@@ -53,5 +58,47 @@ field-validator {
   label {
     color: $grey-light-color;
     padding: 2px 5px;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  field-validator {
+    width: 35%;
+  }
+
+  .edit-wrapper .data-holder {
+    width: 600px;
+  }
+
+  .header-holder {
+    width: 550px;
+  }
+}
+
+@media screen and (max-width: 610px) {
+  field-validator {
+    width: 100%;
+  }
+
+  .edit-wrapper .data-holder {
+    width: 350px;
+  }
+
+  .header-holder {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  field-validator {
+    width: 100%;
+  }
+
+  .edit-wrapper .data-holder {
+    width: 250px;
+  }
+
+  .header-holder {
+    width: 200px;
   }
 }
