@@ -6,7 +6,7 @@
     "ng": "ng",
     "start-dev": "ng serve",
     "start": "node server.js",
-    "postinstall": "ng build --aot -prod",
+    "postinstall": "ng build --aot",
     "deploy": "git push origin master && git push heroku master",
     "build": "ng build",
     "test": "ng test",
@@ -15,6 +15,9 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/cli": "1.1.2",
+    "@angular/compiler-cli": "^4.0.0",
+    "@angular/language-service": "^4.0.0",
     "@angular/animations": "^4.0.0",
     "@angular/common": "^4.0.0",
     "@angular/compiler": "^4.0.0",
