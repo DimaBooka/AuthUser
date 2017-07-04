@@ -1,80 +1,36 @@
 [
   {
-    "name": "Demoawdawd",
-    "surName": "Mareno",
-    "dob": {
-      "date": {
-        "year": 1991,
-        "month": 7,
-        "day": 11
-      },
-      "jsdate": "1991-07-10T21:00:00.000Z",
-      "formatted": "07/11/1991",
-      "epoc": 679179600
-    },
-    "phone": "+38(057) 878 9789",
-    "adress": "Milk road",
-    "city": "Vers",
-    "country": "USA",
-    "username": "booka",
-    "password": "Tunnel777",
-    "employmentStatus": "employed",
-    "employmentPlace": "4234234",
-    "annualIncome": "5000+",
-    "favouriteSport": "wdawd",
-    "id": 1,
-    "token": "afabdbd8e1e8dee500bd498ad00859d6"
-  },
-  {
-    "name": "Demo",
-    "surName": "Mareno",
-    "dob": {
-      "date": {
-        "year": 1991,
-        "month": 7,
-        "day": 11
-      },
-      "jsdate": "1991-07-10T21:00:00.000Z",
-      "formatted": "07/11/1991",
-      "epoc": 679179600
-    },
-    "phone": "+38(057) 878 9789",
-    "adress": "Milk road",
-    "city": "Vers",
-    "country": "USA",
-    "username": "moreno",
-    "password": "Moreno2",
-    "employmentStatus": "unemployed",
+    "name": "Dima",
+    "surName": "Booka",
+    "dob": "1995-06-07",
+    "phone": "+38(056) 165 1651",
+    "adress": "AWDawdawwf",
+    "city": "awfdawfawf",
+    "country": "wegwegweg",
+    "username": "dima",
+    "password": "Tunnel1",
+    "employmentStatus": "Unemployed",
     "employmentPlace": "default",
-    "annualIncome": "600-1500",
-    "favouriteSport": "adawd",
-    "id": 2,
-    "token": "bfabdbd8d1e8dee500bd498ad00859d5"
+    "annualIncome": "$600 - $1500",
+    "favouriteSport": "awda",
+    "id": 1,
+    "token": "7e34c0caea52335f02ec349972763f54"
   },
   {
-    "name": "New",
-    "surName": "user",
-    "dob": {
-      "date": {
-        "year": 1991,
-        "month": 7,
-        "day": 17
-      },
-      "jsdate": "1991-07-16T21:00:00.000Z",
-      "formatted": "07/17/1991",
-      "epoc": 679698000
-    },
-    "phone": "+38(088) 888 8888",
-    "adress": "Awdwdwd",
-    "city": "Dwwwww",
-    "country": "wwwewewe",
-    "username": "dima_booka",
-    "password": "Tunnel777",
-    "employmentStatus": "employed",
-    "employmentPlace": "Light IT",
-    "annualIncome": "2000-5000",
-    "favouriteSport": "",
-    "id": 3,
-    "token": "bfabdbd8d1e8dee500bd498ad00859d5"
+    "name": "AWdawd",
+    "surName": "awdawd",
+    "dob": "1995-06-14",
+    "phone": "+38(023) 423 4234",
+    "adress": "awdawd",
+    "city": "Wdwd",
+    "country": "awdw",
+    "username": "Dima222222",
+    "password": "Dima222222",
+    "employmentStatus": "Employed",
+    "employmentPlace": "adawdawdwad",
+    "annualIncome": "$600 - $1500",
+    "favouriteSport": "Dima222222",
+    "id": 2,
+    "token": "18fe75687bd5c755f1f2a1681de67132"
   }
 ]

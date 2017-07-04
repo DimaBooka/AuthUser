@@ -15,6 +15,9 @@ export class FieldValidatorComponent {
   errorMessage: string = '';
 
   ngOnChanges(changes:any): void {
+    if (!changes.inputErrors) {
+      return
+    }
     let errors:any = changes.inputErrors.currentValue;
     this.errorMessage = '';
     if (errors) {

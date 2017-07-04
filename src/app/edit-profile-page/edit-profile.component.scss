@@ -1,0 +1,57 @@
+@import "../common-usage/common-interface";
+
+h1{
+  color: rgba(61, 66, 73, 0.88);
+}
+
+.header-holder {
+  float: left;
+  display: inline-block;
+  width: 850px;
+}
+
+.edit-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+field-validator {
+  width: 25%;
+  margin: 4px 34px;
+}
+
+.edit-wrapper .btn-holder {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.edit-wrapper .data-holder {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 900px;
+}
+
+.form-group.edit-view {
+  display: flex;
+  flex-direction: column-reverse;
+
+  .form-input, select {
+    border: none;
+    border-bottom: 1px solid $grey-color;
+    border-radius: 0;
+    padding: 2px 5px;
+    height: auto;
+
+    &.mockup {
+      font-size: 14px;
+    }
+  }
+
+  label {
+    color: $grey-light-color;
+    padding: 2px 5px;
+  }
+}

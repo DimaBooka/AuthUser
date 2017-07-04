@@ -39,7 +39,7 @@ export class SecondStepComponent implements OnInit {
   }
 
   checkStatusValue(e) {
-    this.showPlaceField = e.target.value == 'employed';
+    this.showPlaceField = e.target.value == 'Employed';
   }
 
   submitSecondStep() {

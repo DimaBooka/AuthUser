@@ -24,6 +24,7 @@ export class FirstStepComponent implements OnInit {
     openSelectorOnInputClick: true,
     disableUntil: {year: 1900, month: 1, day: 1}
   };
+  maxDate: any = new Date().toISOString().substring(0,10);
   public mask = ['+', '3', '8', '(', '0', /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, ' ', /\d/, /\d/, /\d/, /\d/];
 
   validationMessages = validationMessages;

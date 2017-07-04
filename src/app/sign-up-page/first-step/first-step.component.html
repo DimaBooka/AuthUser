@@ -20,8 +20,11 @@
       <div class="form-group">
         <!--<input class="form-input" type="date" placeholder="mm/dd/yy" formControlName="dob">-->
 
-        <my-date-picker name="dob" [options]="myDatePickerOptions" placeholder="mm/dd/yy" [selDate]="01/01/1990"
-                        formControlName="dob"></my-date-picker>
+        <input class="form-input" type="date" ngui-datetime-picker
+               min-date="1900-01-01" max-date="{{maxDate}}" close-on-select="true"
+               date-only="true" placeholder="mm/dd/yy" default-value="1995-06-10" formControlName="dob" [readonly]="editProfile">
+        <!--<my-date-picker name="dob" [options]="myDatePickerOptions" placeholder="mm/dd/yy" [selDate]="01/01/1990"-->
+                        <!--formControlName="dob"></my-date-picker>-->
       </div>
     </field-validator>
 

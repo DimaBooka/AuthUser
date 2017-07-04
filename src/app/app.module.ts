@@ -21,7 +21,7 @@ import { SecondStepComponent } from './sign-up-page/second-step/second-step.comp
 import { AuthGuard } from './guards/onlyAuth';
 import { NoAuthGuard } from './guards/onlyNotAuth';
 import { DeactivateSignUpGuard } from './guards/deactivateSignUp';
-
+import { NguiDatetimePickerModule } from '@ngui/datetime-picker';
 
 @NgModule({
   declarations: [
@@ -38,6 +38,7 @@ import { DeactivateSignUpGuard } from './guards/deactivateSignUp';
     BrowserModule,
     ReactiveFormsModule,
     MyDatePickerModule,
+    NguiDatetimePickerModule,
     TextMaskModule,
     FormsModule,
     CommonUsageModule,

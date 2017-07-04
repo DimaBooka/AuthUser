@@ -3,7 +3,8 @@ import { User, UserUpdate } from '../common-usage/models/user.model';
 import { ActivatedRoute } from '@angular/router';
 import {
   MinLengthValidator, MaxLengthValidator, ageValidator,
-  MinLengthPhoneValidator, symbolsValidator, placeRequiredValidator, employedRequiredValidator
+  MinLengthPhoneValidator, symbolsValidator, placeRequiredValidator, employedRequiredValidator,
+  placeRequiredProfileValidator
 } from '../common-usage/validators';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { IMyDpOptions } from 'mydatepicker';
@@ -30,8 +31,9 @@ export class EditProfileComponent implements OnInit{
   profile: User;
   updateData: UserUpdate;
   profileForm: FormGroup;
+  maxDate: any = new Date().toISOString().substring(0,10);
   showPlaceField: boolean = false;
-  editProfile: boolean = false;
+  editProfile: boolean = true;
 
   constructor(private authService: AuthService, private route: ActivatedRoute, private fb: FormBuilder){
     this.route.data.subscribe((user: any)=> {
@@ -55,7 +57,7 @@ export class EditProfileComponent implements OnInit{
       country: [this.profile['country'], [Validators.required]],
       username: [this.profile['username'], [Validators.required, MinLengthValidator(2), MaxLengthValidator(15)]],
       password: [this.profile['password'], [Validators.required, symbolsValidator, MinLengthValidator(6)]],
-      employmentStatus: [this.profile['employmentStatus'], [Validators.required, placeRequiredValidator('employmentPlace', this.profile.employmentPlace)]],
+      employmentStatus: [this.profile['employmentStatus'], [Validators.required, placeRequiredProfileValidator('employmentPlace', this.profile.employmentPlace)]],
       employmentPlace: [this.profile['employmentPlace'], [employedRequiredValidator('employmentStatus')]],
       annualIncome: [this.profile['annualIncome'], [Validators.required]],
       favouriteSport: [this.profile['favouriteSport'], []],
@@ -63,10 +65,8 @@ export class EditProfileComponent implements OnInit{
   }
 
   toggleForm() {
-    if (!this.editProfile) {
-      this.profileForm = this.fb.group(this.initForm());
-    }
     this.editProfile = !this.editProfile;
+    this.profileForm = this.fb.group(this.initForm());
   }
 
   checkStatusValue(e) {

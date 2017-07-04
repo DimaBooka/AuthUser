@@ -2,7 +2,7 @@ import { AbstractControl, ValidatorFn } from '@angular/forms';
 
 export function ageValidator(c: AbstractControl) {
   let date = new Date();
-  if (c.value && c.value.date && date.getFullYear() - c.value.date.year < 18) {
+  if (c.value && date.getFullYear() - new Date(c.value).getFullYear() < 18) {
     return {'ageValidator' : true}
   }
   return null
@@ -53,7 +53,7 @@ export function MinLengthPhoneValidator(length: number): ValidatorFn {
 
 export function employedRequiredValidator(param: any): ValidatorFn {
   return (c: AbstractControl) : {[key: string]: boolean} | null => {
-    if (c.parent && c.parent.get(param).value == 'employed' && !c.value) {
+    if (c.parent && c.parent.get(param).value == 'Employed' && !c.value) {
       return {requiredPlace: true};
     }
     return null;
@@ -62,22 +62,22 @@ export function employedRequiredValidator(param: any): ValidatorFn {
 
 export function placeRequiredValidator(param: any, place: string = ''): ValidatorFn {
   return (c: AbstractControl) : {[key: string]: boolean} | null => {
-    if (c.parent && !c.parent.get(param).value && c.value != 'employed') {
+    if (c.parent && !c.parent.get(param).value && c.value != 'Employed') {
       c.parent.get(param).setValue('default');
-    } else if (c.parent && c.parent.get(param).value && c.value == 'employed') {
+    } else if (c.parent && c.parent.get(param).value && c.value == 'Employed') {
       c.parent.get(param).setValue(place);
     }
     return null;
   };
 }
-//
-// export function placeRequiredProfileValidator(param: any, place: string): ValidatorFn {
-//   return (c: AbstractControl) : {[key: string]: boolean} | null => {
-//     if (c.parent && !c.parent.get(param).value && c.value != 'employed') {
-//       c.parent.get(param).setValue('default');
-//     } else if (c.parent && c.parent.get(param).value && c.value == 'employed') {
-//       c.parent.get(param).setValue(place);
-//     }
-//     return null;
-//   };
-// }
+
+export function placeRequiredProfileValidator(param: any, place: string): ValidatorFn {
+  return (c: AbstractControl) : {[key: string]: boolean} | null => {
+    if (c.parent && !c.parent.get(param).value && c.value != 'Employed') {
+      c.parent.get(param).setValue(place);
+    } else if (c.parent && c.parent.get(param).value && c.value == 'Employed') {
+      c.parent.get(param).setValue(place);
+    }
+    return null;
+  };
+}
